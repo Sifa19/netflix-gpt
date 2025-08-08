@@ -1,0 +1,110 @@
+//////////////////////////////// ROOT STRUCTURE ////////////////////////
+
+netflix-gpt/
+│── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   └── assets/          # static images, icons, etc.
+│
+│── src/
+│   ├── api/             # API service functions (fetch data from backend or TMDB)
+│   ├── assets/          # App-specific images, SVGs
+│   ├── components/      # Reusable UI components (buttons, cards, navbar)
+│   ├── config/          # Constants, API keys, routes
+│   ├── context/         # React Context for global state
+│   ├── hooks/           # Custom hooks (e.g., useAuth, useFetchMovies)
+│   ├── layouts/         # Common layouts (e.g., MainLayout, AuthLayout)
+│   ├── pages/           # Page-level components (Home, Login, MovieDetails)
+│   ├── routes/          # App routing setup
+│   ├── services/        # Business logic (Auth service, Movie service)
+│   ├── store/           # Redux or Zustand store (if not using Context)
+│   ├── styles/          # Global CSS, Tailwind config, variables
+│   ├── utils/           # Helper functions (debounce, formatDate)
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+│
+└── package.json
+
+/////////////////////////////// COMPONENTS STRUCTURE ////////////////////////////////////
+
+components/
+│── common/                # Pure reusable UI elements (buttons, modals, loaders)
+│   ├── Button/
+│   │   ├── Button.jsx
+│   │   └── Button.css
+│   ├── Modal/
+│   │   ├── Modal.jsx
+│   │   └── Modal.css
+│   ├── Spinner/
+│   │   ├── Spinner.jsx
+│   │   └── Spinner.css
+│   └── RatingStars/
+│       ├── RatingStars.jsx
+│       └── RatingStars.css
+│
+│── layout/                # Layout-related UI
+│   ├── Navbar/
+│   │   ├── Navbar.jsx
+│   │   └── Navbar.css
+│   ├── Footer/
+│   │   ├── Footer.jsx
+│   │   └── Footer.css
+│   └── Sidebar/           # Optional if you have one
+│       ├── Sidebar.jsx
+│       └── Sidebar.css
+│
+│── movie/                 # Movie-related UI
+│   ├── Banner/
+│   │   ├── Banner.jsx
+│   │   └── Banner.css
+│   ├── MovieCard/
+│   │   ├── MovieCard.jsx
+│   │   └── MovieCard.css
+│   ├── MovieRow/
+│   │   ├── MovieRow.jsx
+│   │   └── MovieRow.css
+│   └── VideoPlayer/
+│       ├── VideoPlayer.jsx
+│       └── VideoPlayer.css
+│
+│── auth/                  # Authentication-related components
+│   ├── LoginForm.jsx
+│   ├── RegisterForm.jsx
+│   └── AuthBanner.jsx
+│
+└── search/
+    ├── SearchBar.jsx
+    └── SearchResults.jsx
+
+
+/////////////////////////////////// PAGES STRUCTURE ///////////////////
+pages/
+│── Home/
+│   ├── Home.jsx           # Landing page after login
+│   └── Home.css
+│
+│── Auth/
+│   ├── Login.jsx          # Sign-in screen
+│   ├── Register.jsx       # Sign-up screen
+│   └── Auth.css           # Shared styles for login/register
+│
+│── Movie/
+│   ├── MovieDetails.jsx   # Movie/TV show detail page
+│   └── MovieDetails.css
+│
+│── Search/
+│   ├── Search.jsx         # Search results page
+│   └── Search.css
+│
+│── Profile/
+│   ├── Profile.jsx        # User profile & settings
+│   └── Profile.css
+│
+│── Browse/
+│   ├── Browse.jsx         # Page showing genres/categories
+│   └── Browse.css
+│
+└── NotFound/
+    ├── NotFound.jsx       # 404 page
+    └── NotFound.css
