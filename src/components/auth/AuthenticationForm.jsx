@@ -3,6 +3,8 @@ import { validateEmail, validatePassword } from "../../utils/formValidation";
 import signUpUser from "../../services/authSignupService";
 import signInUser from "../../services/authSignInService";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../store/userSlice";
 
 function AuthenticationForm() {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -12,6 +14,8 @@ function AuthenticationForm() {
   const userNameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+
+  const dispatch = useDispatch();
 
   const handleSignInToggle = (e) => {
     e.preventDefault();
@@ -51,6 +55,7 @@ function AuthenticationForm() {
     setErrMsg([res]);
     if (res.isValid) {
       navigate("/browse");
+      dispatch(addUser({ id: res.user.id, email, name: res.user.name }));
     }
   };
 

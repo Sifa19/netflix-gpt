@@ -10,7 +10,11 @@ const signUpUser = async (name, email, password) => {
     );
     const user = userCredential.user;
     await updateProfile(user, { displayName: name });
-    return { isValid: true, message: "SucessFull" };
+    return {
+      isValid: true,
+      message: "SucessFull",
+      user: { id: user.uid, email: user.email, name: user.displayName },
+    };
   } catch (error) {
     if (error.message.includes("email-already-in-use"))
       return {
