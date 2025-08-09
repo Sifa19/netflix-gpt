@@ -1,4 +1,4 @@
-import LoginForm from "../components/auth/LoginForm";
+import AuthenticationForm from "../components/auth/AuthenticationForm";
 
 function Login() {
   return (
@@ -8,7 +8,7 @@ function Login() {
       bg-cover
       flex flex-col justify-center items-center"
     >
-      <LoginForm />
+      <AuthenticationForm />
     </div>
   );
 }

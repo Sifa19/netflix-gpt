@@ -17,17 +17,39 @@ const passwordRegex =
 // [A-Za-z\d@$!%*?&]{8,10} → only these characters,  length between 8 and 10
 
 const validateEmail = (email) => {
-  const isValidEmail = emailRegex.test(email);
-  if (!isValidEmail) {
-    return "Email Id is not valid";
-  }
+  return {
+    isValid: emailRegex.test(email),
+    message: "Email Id is not valid",
+  };
 };
 
 const validatePassword = (password) => {
-  const isPasswordVaild = passwordRegex.test(password);
-  if (!isPasswordVaild) {
-    return "Password is not valid";
-  }
+  const errors = [];
+  errors.push({
+    isValid: password.length >= 8,
+    message: "At least 8 characters long.",
+  });
+  errors.push({
+    isValid: /[A-Z]/.test(password),
+    message: "At least one uppercase letter.",
+  });
+  errors.push({
+    isValid: /[a-z]/.test(password),
+    message: "At least one lowecase letter.",
+  });
+  errors.push({
+    isValid: /[0-9]/.test(password),
+    message: "At least one number.",
+  });
+  errors.push({
+    isValid: /[@$!%*?&]/.test(password),
+    message: "At least one special character.",
+  });
+
+  return {
+    isValid: errors.filter((err) => err.isValid === false).length === 0,
+    errors,
+  };
 };
 
 export { validateEmail, validatePassword };
