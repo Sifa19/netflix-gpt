@@ -1,9 +1,7 @@
+import Body from "./pages/Body";
+
 function App() {
-  return (
-    <>
-      <div class="text-3xl font-bold underline">Hello</div>
-    </>
-  );
+  return <Body />;
 }
 
 export default App;
