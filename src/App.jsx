@@ -1,12 +1,12 @@
 import Body from "./pages/Body";
-import { Provider } from "react-redux";
-import appStore from "../src/store/appStore";
+import appRouter from "./routes/appRoutes";
+import { RouterProvider } from "react-router-dom";
 
 function App() {
   return (
-    <Provider store={appStore}>
+    <RouterProvider router={appRouter}>
       <Body />
-    </Provider>
+    </RouterProvider>
   );
 }
 

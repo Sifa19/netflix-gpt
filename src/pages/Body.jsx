@@ -1,15 +1,12 @@
 import { Outlet, RouterProvider } from "react-router-dom";
-import appRouter from "../routes/AppRoutes";
 import Header from "../components/navbar/Header";
 
 function Body() {
   return (
-    <>
+    <div>
       <Header />
-      <RouterProvider router={appRouter}>
-        <Outlet />
-      </RouterProvider>
-    </>
+      <Outlet />
+    </div>
   );
 }
 

@@ -1,12 +1,38 @@
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { removeUser } from "../../store/userSlice";
+import { addUser, removeUser } from "../../store/userSlice";
 import signOutUser from "../../services/authSignOutService";
+import { useEffect } from "react";
+import auth from "../../config/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log(user);
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(
+          addUser({
+            id: uid,
+            email,
+            name: displayName,
+          })
+        );
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+  }, [dispatch, navigate]);
+
   return (
     <div
       className="absolute px-10 py-2 w-full
@@ -28,15 +54,12 @@ function Header() {
               <FontAwesomeIcon icon={faUser} className="text-md" />
               <span className="text-xs">{user.name}</span>
             </div>
-            <a href="/">
-              <FontAwesomeIcon
-                icon={faRightFromBracket}
-                onClick={() => {
-                  signOutUser();
-                  dispatch(removeUser());
-                }}
-              />
-            </a>
+            <FontAwesomeIcon
+              icon={faRightFromBracket}
+              onClick={() => {
+                signOutUser();
+              }}
+            />
           </>
         )}
       </div>
