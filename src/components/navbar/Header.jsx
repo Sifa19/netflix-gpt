@@ -14,8 +14,7 @@ function Header() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      console.log(user);
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName } = user;
         dispatch(
@@ -31,6 +30,8 @@ function Header() {
         navigate("/");
       }
     });
+
+    return () => unsubscribe();
   }, [dispatch, navigate]);
 
   return (
