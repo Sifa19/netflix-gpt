@@ -39,12 +39,12 @@ function Header() {
     <div
       className="absolute px-10 py-2 w-full
     bg-gradient-to-b from-black
-    flex items-center-safe"
+    flex items-center-safe z-50"
     >
       <img className="w-28 sm:w-44" src={LOGO_URL} alt="logo" />
       <div
         className="ml-auto flex items-center gap-4 cursor-pointer
-      text-gray-900 text-3xl"
+      text-gray-300 text-3xl"
       >
         {user?.id && (
           <>

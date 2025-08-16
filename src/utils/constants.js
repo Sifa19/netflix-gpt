@@ -13,4 +13,6 @@ const TMDB_API_OPTIONS = {
   },
 };
 
-export { LOGO_URL, TMDB_API, TMDB_API_OPTIONS };
+const TMBD_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+
+export { LOGO_URL, TMDB_API, TMDB_API_OPTIONS, TMBD_IMAGE_URL };

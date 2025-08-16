@@ -9,14 +9,9 @@ function useNowPlayingMovies() {
     (async () => {
       const data = await getNowPlayingMovies();
       console.log(data);
-      dispatch(
-        addNowPlayingMovies({
-          data,
-        })
-      );
+      dispatch(addNowPlayingMovies(data));
     })();
   }, [dispatch]);
-  return <div></div>;
 }
 
 export default useNowPlayingMovies;
