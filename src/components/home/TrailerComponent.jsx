@@ -2,30 +2,28 @@ import { TMBD_IMAGE_URL } from "../../utils/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import useMovieTrailer from "../../hooks/useMovieTrailer";
-import ReactPlayer from "react-player";
 
 function TrailerComponent({ movie }) {
   const { id, original_title, overview } = movie;
   const videoKey = useMovieTrailer(id)?.key;
-  console.log(videoKey);
 
   return (
     <div
-      className="absolute flex flex-col w-screen
-     text-stone-100  "
+      className="flex flex-col w-screen aspect-video
+     text-stone-100 "
     >
       <iframe
-        className="w-screen h-[520px] "
-        src={`https://www.youtube.com/embed/${videoKey}?autoplay=1&mute=1&loop=1&playlist=${videoKey}&start=2&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1`}
+        className="w-screen aspect-video "
+        src={`https://www.youtube.com/embed/${videoKey}?autoplay=1&mute=1&loop=1&playlist=${videoKey}&start=5&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1`}
       ></iframe>
       <div
         className="absolute 
       bg-gradient-to-r from-black
       w-screen aspect-video"
       >
-        <div className="absolute bottom-16 px-16">
+        <div className="absolute bottom-32 px-16">
           <p className="mb-10 font-extrabold text-3xl">{original_title}</p>
-          <p className="w-[40%] mb-6">{overview}</p>
+          <p className="w-[40%] mb-6 text-sm">{overview}</p>
           <div>
             <button
               className="bg-stone-100 text-stone-900 

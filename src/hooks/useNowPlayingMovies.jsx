@@ -8,7 +8,6 @@ function useNowPlayingMovies() {
   useEffect(() => {
     (async () => {
       const data = await getNowPlayingMovies();
-      console.log(data);
       dispatch(addNowPlayingMovies(data));
     })();
   }, [dispatch]);

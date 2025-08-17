@@ -1,20 +1,19 @@
 import MainContainer from "../components/home/MainContainer";
-import MovieLists from "../components/home/MovieLists";
+import MovieListContainer from "../components/home/MovieListContainer";
 import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
+import usePopularMovies from "../hooks/usePopularMovies";
+import useUpcommingMovies from "../hooks/useUpcommingMovies";
+import useTopRatedMovies from "../hooks/useTopRatedMovies";
 
 function Home() {
   useNowPlayingMovies();
+  usePopularMovies();
+  useUpcommingMovies();
+  useTopRatedMovies();
   return (
-    <div className="absolute">
-      {/**
-       * main container 
-          - background vedios
-          - vedio title
-       * secondary container
-          - list of movies
-              - list of cards
-       */}
+    <div>
       <MainContainer />
+      <MovieListContainer />
     </div>
   );
 }

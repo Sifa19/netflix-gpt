@@ -3,7 +3,7 @@ import Header from "../components/navbar/Header";
 
 function Body() {
   return (
-    <div>
+    <div className="box-border">
       <Header />
       <Outlet />
     </div>
